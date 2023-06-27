@@ -2698,7 +2698,7 @@ RunService:BindToRenderStep(UpdateName, 199, Update);
 })
 
 local Button = MainTab:CreateButton({
-   Name = "IT Credit Farm (might have to wait a bit for the players to spawn)",
+   Name = "IT Credit Farm/Hiding Spot (might have to wait a bit for the players to spawn)",
    Callback = function()
    local Players = game:GetService("Players")
 local LocalPlayer = Players.LocalPlayer
