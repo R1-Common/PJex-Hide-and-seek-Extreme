@@ -2696,3 +2696,46 @@ RunService:BindToRenderStep(GetDataName, 300, UpdatePlayerData);
 RunService:BindToRenderStep(UpdateName, 199, Update);
    end,
 })
+
+local Button = MainTab:CreateButton({
+   Name = "IT Credit Farm (might have to wait a bit for teh players to spawn",
+   Callback = function()
+   local Players = game:GetService("Players")
+local LocalPlayer = Players.LocalPlayer
+
+local teleportPosition = Vector3.new(330, 158, -33)
+
+local function teleportToPosition(position)
+    LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(position)
+end
+
+teleportToPosition(teleportPosition)
+   end,
+})
+
+local Button = MainTab:CreateButton({
+   Name = "IT Player Farm",
+   Callback = function()
+   local Players = game:GetService("Players")
+local LocalPlayer = Players.LocalPlayer
+
+-- Function to teleport to a player
+local function teleportToPlayer(player)
+    local character = player.Character
+    if character then
+        local humanoidRootPart = character:FindFirstChild("HumanoidRootPart")
+        if humanoidRootPart then
+            LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(humanoidRootPart.Position)
+        end
+    end
+end
+
+-- Teleport to each player in the game
+for _, player in ipairs(Players:GetPlayers()) do
+    if player ~= LocalPlayer then
+        teleportToPlayer(player)
+        wait(0.01) -- Adjust this delay as needed to control the teleport speed
+    end
+end
+   end,
+})
