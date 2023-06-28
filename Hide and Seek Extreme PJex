@@ -2739,3 +2739,23 @@ for _, player in ipairs(Players:GetPlayers()) do
 end
    end,
 })
+
+local Toggle = MainTab:CreateToggle({
+   Name = "NoClip",
+   CurrentValue = false,
+   Flag = "ToggleIDK", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+   Callback = function(Value)
+   -- The noclip script
+
+local runservice = game:GetService("RunService")
+
+local player = game:GetService("Players").LocalPlayer
+runservice.Stepped:Connect(function()
+    for i,v in pairs(player.Character:GetDescendants()) do
+        if v:IsA("BasePart") then
+            v.CanCollide = false
+        end
+    end
+end)
+   end,
+})
